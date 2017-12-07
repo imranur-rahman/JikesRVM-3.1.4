@@ -1,0 +1,56 @@
+#Jikes RVM User Guide
+http://www.jikesrvm.org/UserGuide/
+
+#MMTk User Guide
+http://www.jikesrvm.org/UserGuide/MMTk/
+
+#Cloning Jikes RVM (Linux Commands)
+
+sudo apt-get update
+
+sudo apt-get install build-essential  gcc-multilib  g++-multilib ant bison openjdk-7-jdk mercurial
+
+git clone https://github.com/JikesRVM/JikesRVM.git jikesrvm
+
+#Eclipse Import
+
+cd jikesrvm
+
+bin/buildit -j /usr/lib/jvm/java-7-openjdk-amd64/ --eclipse localhost
+
+Import into eclipse
+
+#Building Jikes RVM
+
+bin/buildit -j /usr/lib/jvm/java-7-openjdk-amd64/ localhost production 
+
+bin/buildit -j /usr/lib/jvm/java-7-openjdk-amd64/ localhost prototype
+
+cd dist/production_x86_64/
+
+cd dist/prototype_x86_64/
+
+rvm -jar dacapo-2006-10-MR2.jar fop/bloat/pmd (fop, bloat, pmd are Java benchmarks from DaCapo suite)
+
+./rvm -jar /home/shimul/Downloads/dacapo-2006-10-MR2.jar fop
+./rvm -jar /home/shimul/Downloads/dacapo-2006-10-MR2.jar bloat
+./rvm -jar /home/shimul/Downloads/dacapo-2006-10-MR2.jar pmd
+
+./rvm -jar /home/shimul/Downloads/dacapo-9.12-batch.jar pmd
+
+
+#DaCapo Benchmarks
+
+http://dacapobench.org/
+
+https://sourceforge.net/projects/dacapobench/files/9.12-bach/ (download dacapo-9.12-bach.jar)
+
+https://sourceforge.net/projects/dacapobench/files/archive/2006-10-MR2/ (download dacapo-2006-10-MR2.jar)
+
+
+#Running a test run
+bin/buildit localhost --test-run pre-commit
+
+#MMTk Test Harness
+ant mmtk-harness
+bin/test-mmtk
