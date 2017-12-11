@@ -20,10 +20,10 @@ import org.vmmagic.pragma.*;
 
 /**
  * This class implements <i>per-collector thread</i> behavior and state
- * for the <i>NoGC</i> plan, which simply allocates (without ever collecting
+ * for the <i>Tutorial</i> plan, which simply allocates (without ever collecting
  * until the available space is exhausted.<p>
  *
- * Specifically, this class <i>would</i> define <i>NoGC</i> collection time semantics,
+ * Specifically, this class <i>would</i> define <i>Tutorial</i> collection time semantics,
  * however, since this plan never collects, this class consists only of stubs which
  * may be useful as a template for implementing a basic collector.
  *
@@ -54,21 +54,21 @@ public class TutorialCollector extends ParallelCollector {
    */
   @Override
   public final void collect() {
-    VM.assertions.fail("GC Triggered in NoGC Plan. Is -X:gc:ignoreSystemGC=true ?");
+    VM.assertions.fail("GC Triggered in Tutorial Plan. Is -X:gc:ignoreSystemGC=true ?");
   }
 
   @Inline
   @Override
   public final void collectionPhase(short phaseId, boolean primary) {
-    VM.assertions.fail("GC Triggered in NoGC Plan.");
+    VM.assertions.fail("GC Triggered in Tutorial Plan.");
     /*
-    if (phaseId == NoGC.PREPARE) {
+    if (phaseId == Tutorial.PREPARE) {
     }
 
-    if (phaseId == NoGC.CLOSURE) {
+    if (phaseId == Tutorial.CLOSURE) {
     }
 
-    if (phaseId == NoGC.RELEASE) {
+    if (phaseId == Tutorial.RELEASE) {
     }
 
     super.collectionPhase(phaseId, primary);
@@ -79,7 +79,7 @@ public class TutorialCollector extends ParallelCollector {
    * Miscellaneous
    */
 
-  /** @return The active global plan as a <code>NoGC</code> instance. */
+  /** @return The active global plan as a <code>Tutorial</code> instance. */
   @Inline
   private static Tutorial global() {
     return (Tutorial) VM.activePlan.global();

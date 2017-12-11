@@ -48,5 +48,14 @@ https://sourceforge.net/projects/dacapobench/files/9.12-bach/ (download dacapo-9
 https://sourceforge.net/projects/dacapobench/files/archive/2006-10-MR2/ (download dacapo-2006-10-MR2.jar)
 
 
-Running a test run
+#Running a test run
 bin/buildit localhost --test-run pre-commit
+
+#MMTk Test Harness
+ant mmtk-harness
+bin/test-mmtk
+
+#Build a new GC named Tutorial 
+bin/buildit localhost BaseBaseTutorial
+#and run it
+dist/BaseBaseTutorial_ia32-linux/rvm HelloWorld

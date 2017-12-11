@@ -61,7 +61,7 @@ public class PlanSpecificConfig {
     
     register(
     	new PlanSpecific("org.mmtk.plan.tutorial.Tutorial")
-    	.addExpectedSpaces("default"), 
+    	.addExpectedSpaces("ms"), 
     	"tutorial");
 
     register(

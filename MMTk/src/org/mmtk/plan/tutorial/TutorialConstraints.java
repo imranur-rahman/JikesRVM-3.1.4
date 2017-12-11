@@ -13,6 +13,8 @@
 package org.mmtk.plan.tutorial;
 
 import org.mmtk.plan.PlanConstraints;
+import org.mmtk.policy.MarkSweepSpace;
+import org.mmtk.policy.SegregatedFreeListSpace;
 
 import org.vmmagic.pragma.*;
 
@@ -26,10 +28,15 @@ import org.vmmagic.pragma.*;
 public class TutorialConstraints extends PlanConstraints {
   @Override
   public int gcHeaderBits() {
-    return 0;
+    return MarkSweepSpace.LOCAL_GC_BITS_REQUIRED;
   }
   @Override
   public int gcHeaderWords() {
-    return 0;
+    return MarkSweepSpace.GC_HEADER_WORDS_REQUIRED;
+  }
+  @Override
+  /** @return Size (in bytes) beyond which new regular objects must be allocated to the LOS */
+  public int maxNonLOSDefaultAllocBytes() {
+	return SegregatedFreeListSpace.MAX_FREELIST_OBJECT_BYTES;
   }
 }

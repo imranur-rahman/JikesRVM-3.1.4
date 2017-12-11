@@ -13,7 +13,7 @@
 package org.mmtk.plan.tutorial;
 
 import org.mmtk.plan.*;
-import org.mmtk.policy.ImmortalSpace;
+import org.mmtk.policy.MarkSweepSpace;
 import org.mmtk.utility.heap.VMRequest;
 import org.mmtk.vm.VM;
 
@@ -34,8 +34,8 @@ public class Tutorial extends Plan {
   /**
    *
    */
-  public static final ImmortalSpace noGCSpace = new ImmortalSpace("default", VMRequest.discontiguous());
-  public static final int NOGC = noGCSpace.getDescriptor();
+  public static final MarkSweepSpace msSpace = new MarkSweepSpace("ms", VMRequest.discontiguous());
+  public static final int MARK_SWEEP = msSpace.getDescriptor();
 
 
   /*****************************************************************************
@@ -81,7 +81,7 @@ public class Tutorial extends Plan {
    */
   @Override
   public int getPagesUsed() {
-    return (noGCSpace.reservedPages() + super.getPagesUsed());
+    return (msSpace.reservedPages() + super.getPagesUsed());
   }
 
 

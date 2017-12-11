@@ -54,3 +54,12 @@ bin/buildit localhost --test-run pre-commit
 #MMTk Test Harness
 ant mmtk-harness
 bin/test-mmtk
+
+#Build a new GC named Tutorial 
+bin/buildit localhost BaseBaseTutorial
+#and run it
+dist/BaseBaseTutorial_ia32-linux/rvm HelloWorld
+
+#Adding a new GC
+building - bin/buildit localhost BaseBase Tutorial
+testing - bin/buildit localhost -t gctest BaseBase Tutorial
